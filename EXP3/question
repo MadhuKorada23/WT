@@ -1,0 +1,10 @@
+Develop a Registration Page with the following fields:
+ Create a registration page with the following fields
+1) Name (Text field)
+2) Password (password field)
+3) E-mail id (text field)
+4) Phone number (text field)
+5) Sex (radio button)
+6) Date of birth (3 select boxes)
+7) Languages known (check boxes – English, Telugu, Hindi, Tamil)
+8) Address (text area)

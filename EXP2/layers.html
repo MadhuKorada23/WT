@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Z-Index Layers Example</title>
+
+    <style>
+        /* Page Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f0f0f0;
+        }
+
+        /* Layer 1: Background Layer */
+        .layer1 {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: #4CAF50; /* Green */
+            z-index: 1; /* Bottom Layer */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        /* Layer 2: Middle Layer */
+        .layer2 {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: #2196F3; /* Blue */
+            z-index: 2; /* Middle Layer */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        /* Layer 3: Top Layer */
+        .layer3 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: #E91E63; /* Pink */
+            z-index: 3; /* Top Layer */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Layer (z-index: 1) -->
+    <div class="layer1">Layer 1 (Bottom)</div>
+
+    <!-- Middle Layer (z-index: 2) -->
+    <div class="layer2">Layer 2 (Middle)</div>
+
+    <!-- Top Layer (z-index: 3) -->
+    <div class="layer3">Layer 3 (Top)</div>
+
+</body>
+
+</html>

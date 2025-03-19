@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bookstore SYSTEM "books.dtd">
+<bookstore>
+    <book>
+        <title>Learning Web Design</title>
+        <author>Jennifer Robbins</author>
+        <isbn>978-1491960202</isbn>
+        <publisher>O'Reilly Media</publisher>
+        <edition>5th</edition>
+        <price>45.99</price>
+    </book>
+
+    <book>
+        <title>Clean Code: A Handbook of Agile Software Craftsmanship</title>
+        <author>Robert C. Martin</author>
+        <isbn>978-0132350884</isbn>
+        <publisher>Prentice Hall</publisher>
+        <edition>1st</edition>
+        <price>39.99</price>
+    </book>
+</bookstore>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+
+    <style>
+        body {
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+             
+           
+            
+            background: #fff;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        .gender-group, .language-group {
+            margin-bottom: 10px;
+        }
+
+        button {
+             
+            color: rgb(0, 0, 0);
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a092;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h2>Registration Page</h2>
+
+    <form id="registrationForm" onsubmit="validateForm(event)">
+        <!-- Name -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <!-- Password -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <!-- Email -->
+        <label for="email">E-mail ID:</label>
+        <input type="email" id="email" name="email" required>
+
+        <!-- Phone Number -->
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required placeholder="Enter 10-digit number">
+
+        <!-- Sex (Radio Buttons) -->
+        <label>Sex:</label>
+        <div class="gender-group">
+            <input type="radio" id="male" name="gender" value="Male" required>
+            <label for="male">Male</label>
+
+            <input type="radio" id="female" name="gender" value="Female">
+            <label for="female">Female</label>
+        </div>
+
+        <!-- Date of Birth (Dropdowns) -->
+        <label>Date of Birth:</label>
+        <select id="day" name="day" required>
+            <option value="">Day</option>
+        </select>
+
+        <select id="month" name="month" required>
+            <option value="">Month</option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+        </select>
+
+        <select id="year" name="year" required>
+            <option value="">Year</option>
+        </select>
+
+        <!-- Languages Known (Checkboxes) -->
+        <label>Languages Known:</label>
+        <div class="language-group">
+            <input type="checkbox" id="english" name="language" value="English">
+            <label for="english">English</label>
+
+            <input type="checkbox" id="telugu" name="language" value="Telugu">
+            <label for="telugu">Telugu</label>
+
+            <input type="checkbox" id="hindi" name="language" value="Hindi">
+            <label for="hindi">Hindi</label>
+
+            <input type="checkbox" id="tamil" name="language" value="Tamil">
+            <label for="tamil">Tamil</label>
+        </div>
+
+        <!-- Address (Textarea) -->
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="3" required></textarea>
+
+        <!-- Submit Button -->
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        // Populate day and year dropdowns
+        function populateDateFields() {
+            const daySelect = document.getElementById('day');
+            const yearSelect = document.getElementById('year');
+
+            for (let i = 1; i <= 31; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                daySelect.appendChild(option);
+            }
+
+            const currentYear = new Date().getFullYear();
+            for (let i = currentYear; i >= 1900; i--) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                yearSelect.appendChild(option);
+            }
+        }
+
+        // Form validation function
+        function validateForm(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const gender = document.querySelector('input[name="gender"]:checked');
+            const address = document.getElementById('address').value.trim();
+            const languages = document.querySelectorAll('input[name="language"]:checked');
+
+            // Basic validations
+            if (name === "" || password === "" || email === "" || phone === "" || !gender || address === "") {
+                alert("All fields are required!");
+                return;
+            }
+
+            if (phone.length !== 10 || !/^\d{10}$/.test(phone)) {
+                alert("Enter a valid 10-digit phone number.");
+                return;
+            }
+
+            if (languages.length === 0) {
+                alert("Select at least one language.");
+                return;
+            }
+
+            // Success message
+            alert("Registration Successful!");
+        }
+
+        // Initialize date fields on page load
+        window.onload = populateDateFields;
+    </script>
+
+</body>
+
+</html>
