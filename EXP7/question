@@ -2,3 +2,64 @@ JDBC Programs using Statement
 • A program to create a table
 • A program to insert record in a table
 • A program to fetch records from a table 
+
+
+#insert records into table
+
+import java.io.*;
+import java.sql.*;
+
+public class jdbcinsert
+{
+	static final String url="jdbc:mysql://localhost:3306/aitam";
+    public static void main(String[] args)
+		throws ClassNotFoundException
+	{
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(url, "root"," ");
+            Statement stmt = conn.createStatement();
+            int result = stmt.executeUpdate("insert into cseabc values(20,'Sai')");
+            if (result > 0)
+			System.out.println("successfully inserted");
+            else
+			System.out.println("unsucessful insertion ");
+			conn.close();
+		    }
+        catch (SQLException e) {
+			System.out.println(e);
+		}
+	}
+}
+
+#Fetch records
+
+import java.io.*;
+import java.sql.*;
+
+public class jdbcfetch
+{
+	static final String url="jdbc:mysql://localhost:3306/aitam";
+    public static void main(String[] args)
+		throws ClassNotFoundException
+	{
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(url, "root"," ");
+            Statement stmt = conn.createStatement();
+            ResultSet res=Stmt.executeQuery()
+            while(res.next())
+            {
+                
+                System.out.print(res.getString(1));
+                System.out.print(res.getInt(2));
+
+            }
+            con.close();  
+            }
+catch(Exception e){ System.out.println(e);}  
+}  
+} 
+
+
+

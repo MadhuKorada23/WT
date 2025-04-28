@@ -1,2 +1,34 @@
 JDBC Programs using Prepared Statement
  A program to insert a record and select records 
+
+
+
+import java.io.*;
+import java.sql.*;
+
+public class javadata
+{
+
+	
+	static final String url= "jdbc:mysql://localhost:3306/college";
+    public static void main(String[] args)
+		throws ClassNotFoundException
+	{
+		try {
+			
+			Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, "root","");
+            String query="insert into ps values(?,?)";
+            PreparedStatement stmt=con.prepareStatement(query);  
+			stmt.setString(1,"AITAM");
+			stmt.setInt(2,101); 
+            ResultSet.res=Stmt.executrQuery("Select * from student");
+            while(res.next())
+            {
+                System.out.print(res.getInt(1)+" "+res.getString(2));
+            }
+            con.close();  
+            }
+catch(Exception e){ System.out.println(e);}  
+}  
+}  

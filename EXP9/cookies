@@ -1,0 +1,60 @@
+
+
+// login.html
+
+
+<form action="./cs1">
+UserName:<input type="text" name="t1">
+Password:<input type="password" name="t2">
+<input type="submit" value="SUBMIT">
+</form>
+
+
+
+// cs1.java
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+public class cs1 extends HttpServlet
+{
+ public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException
+    {
+        res.setContentType("text/html");
+        PrintWriter pw = res.getWriter();
+ 	String name=req.getParameter("t1");
+	String pwd=req.getParameter("t2");
+Cookie c1=new Cookie("user",name);
+Cookie c2=new Cookie("pwd",pwd);
+	res.addCookie(c1);
+	res.addCookie(c2);
+	pw.println("<font color='blue' size=20>");
+	pw.println("<form action=\"./cs2\">");
+	pw.println("<input type=submit value='Next'>");
+	pw.println("</form>");
+	pw.close();
+}
+}
+
+
+
+// cs2.java
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+public class cs2 extends HttpServlet
+{
+ public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException,ServletException
+    {
+        res.setContentType("text/html");
+        PrintWriter pw = res.getWriter();
+	Cookie c[]=req.getCookies();        
+ 	pw.println("<font color='red' size=20>");
+	for(int i=0;i<c.length;i++)
+	pw.println(c[i].getName()+" "+c[i].getValue());
+	pw.println("</form>");
+	pw.close();
+}
+}
+
